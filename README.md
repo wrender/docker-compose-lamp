@@ -18,10 +18,11 @@ Example drush install:
 
 ### Accessing the web server
 
-Navigate to http://localhost:8180
+Navigate to [http://localhost:8180](http://localhsot:8180)
 
 ### Accessing phpMyadmin
 
-Navigate to http://localhost:8181  
+Navigate [http://localhost:8181](http://localhsot:8181) 
 
-username: root  password: docker
+username: root  
+password: docker
