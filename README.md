@@ -10,7 +10,10 @@ A simple set of dockers for running a local Drupal or WordPress LAMP
 
 ## Usage Information
 
-By default it mounts to ~/public_html.  From here you can install drupal using Drush.
+By default it mounts to ~/public_html.  From here you can install drupal using Drush or use any website files. 
+
+If your running Ubuntu or Fedora as your local development environment you should match the permission of the ~/public_html folder with the container
+Run `useradd -G www-data www-data; chown -R www-data:www-data ~/public_html`
 
 Example drush install:
 
