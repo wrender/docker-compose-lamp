@@ -24,7 +24,7 @@ Example drush install:
 
 `cd ~/public_html; drush dl drupal-7; mv ~/public_html/drupal*/* ~/public_html; mv ~/public_html/drupal*/.htaccess ~/public_html/drupal*/.gitignore ~/public_html; rm -rf drupal-*`
 
-'sudo chown -R 33:33 ~/public_html'
+`sudo chown -R 33:33 ~/public_html`
 
 `drush site-install standard --db-url='mysql://root:docker@172.17.0.2/drupaldb' --site-name=Example`
 
