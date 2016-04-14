@@ -5,7 +5,7 @@ httpd:
   ports:
     - 8180:80
   volumes:
-    - ~/drupal-html:/var/www/html
+    - ~/public_html:/var/www/html
 maria_db:
   image: mariadb
   environment:
