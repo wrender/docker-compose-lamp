@@ -11,6 +11,12 @@ By default this mounts to ~/public_html.  From here you can install drupal using
 
 If your running Ubuntu or Fedora as your local development environment you should create a user and group and folder to match the permission of the ~/public_html folder with the container's Apache user/group.
 
+'sudo groupadd www-data -g 33'  (If you already have a group with GID 33, that is ok this command will fail)
+
+'sudo useradd -u 33  --no-create-home --system --no-user-group www-data' (If you already have a group with GID 33, that is ok this command will fail)
+
+'sudo usermod -g www-data www-data'  (If you already have a group with GID 33, that is ok this command will fail)
+
 `mkdir ~/public_html; sudo chown -R 33:33 ~/public_html; sudo usermod -aG 33 your_username; sudo chmod 774 ~/public_html;`
 
 *now logout/login of linux as it is needed for the new permissions to take effect.
