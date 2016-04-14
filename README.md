@@ -27,7 +27,7 @@ If your running Ubuntu or Fedora as your local development environment you shoul
 
 
 
-Example drush install:
+## Example Fresh Drupal install:
 
 `cd ~/public_html; drush dl drupal-7; mv ~/public_html/drupal*/* ~/public_html; mv ~/public_html/drupal*/.htaccess ~/public_html/drupal*/.gitignore ~/public_html; rm -rf drupal-*`
 
@@ -37,6 +37,12 @@ Example drush install:
 * You need to have Drush, PHP, and mariadb_client packages installed for Drush to be able to connect to the container.
 
 * You need to change the IP address above 172.17.0.2 to the IP of your database container. You can do a `docker inspect your_database_container` to find the IP.
+
+## Example import existing Drupal install:
+
+-  Copy your Drupal site files to ~/public_html
+-  In phpMyAdmin create a new user, and database which matches the credentials in your Drupal sites/default/settings.php file.
+-  Import a dump of your database using phpMyAdmin
 
 ### Accessing the web server
 
