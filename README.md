@@ -9,11 +9,11 @@ A simple set of dockers for running a local Drupal or WordPress LAMP
 
 By default this mounts to ~/public_html.  From here you can install drupal using Drush or use any website files.
 
-If your running Ubuntu or Fedora as your local development environment you should create a user and group and folder to match the permission of the ~/public_html folder with the container's Apache user/group.
+If your running Ubuntu or Fedora as your local development environment you should create a user and group and folder to match the permission of the ~/public_html folder with the container's Apache user/group. The Apache runs as UID and GUID 33 (www-data).
 
 `sudo groupadd www-data -g 33; sudo useradd -u 33  --no-create-home --system --no-user-group www-data; sudo usermod -g www-data www-data` (If you already have a group with GID 33, that is ok this command will fail)
 
-`mkdir ~/public_html; sudo chown -R 33:33 ~/public_html; sudo usermod -aG 33 your_username; sudo usermod -aG your_username 33; sudo chmod 774 ~/public_html;`
+`mkdir ~/public_html; sudo chown -R 33:33 ~/public_html; sudo usermod -aG 33 your_username; sudo usermod -aG your_username www-data; sudo chmod 774 ~/public_html;`
 
 *now logout/login of linux as it is needed for the new permissions to take effect.
 
