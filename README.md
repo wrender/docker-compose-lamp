@@ -1,6 +1,6 @@
 # docker-compose-lamp
 A simple set of dockers for running a local Drupal or WordPress LAMP
-- Apache
+- Apache 2.4
 - PHP 7.0
 - MariaDB 10.1 
 - phpMyAdmin
