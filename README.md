@@ -11,7 +11,7 @@ By default this mounts to ~/public_html.  From here you can install drupal using
 
 If your running Ubuntu or Fedora as your local development environment you should create a user and group and folder to match the permission of the ~/public_html folder with the container's Apache user/group.
 
-`sudo useradd www-data; sudo mkdir ~/public_html; sudo chown -R www-data:www-data ~/public_html; sudo chmod 774 ~/public_html; sudo usermod -a -G www-data $USER`
+`mkdir ~/public_html; sudo chown -R 33:33 ~/public_html; sudo usermod -aG 33 your_username; sudo chmod 774 ~/public_html;`
 
 *now logout/login of linux as it is needed for the new permissions to take effect.
 
@@ -19,6 +19,8 @@ If your running Ubuntu or Fedora as your local development environment you shoul
 `docker-compose up -d`
 
 Example drush install:
+
+`drush dl drupal-7; mv ~/public_html/drupal*/* ~/public_html; mv ~/public_html/drupal*/.htaccess ~/public_html/drupal*/.gitignore ~/public_html; rm -rf drupal-*`
 
 `drush site-install standard --db-url='mysql://root:docker@172.17.0.2/drupaldb' --site-name=Example`
 
