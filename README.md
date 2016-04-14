@@ -5,9 +5,11 @@ A simple set of dockers for running a local Drupal or WordPress LAMP
 - MariaDB 10.1
 - phpMyAdmin
 
-## Usage Information
+## General Usage Information
 
-By default this mounts to ~/public_html.  From here you can install drupal using Drush or use any website files.
+By default this mounts the /var/www/html directory to ~/public_html on your Linux OS.  From here you can install drupal using Drush or use any website files. It is intended to keep all of the web application files outside of the containers so you can easily work on the files. The database should go in the mariadb container included with this.
+
+## Setup
 
 If your running Ubuntu or Fedora as your local development environment you should create a user and group and folder to match the permission of the ~/public_html folder with the container's Apache user/group. The Apache runs as UID and GUID 33 (www-data).
 
@@ -17,7 +19,7 @@ If your running Ubuntu or Fedora as your local development environment you shoul
 
 *now logout/login of linux as it is needed for the new permissions to take effect.
 
-## To run the containers
+### To run the containers
 
 `mkdir ~/public_html; sudo chown -R 33:33 ~/public_html; sudo chmod g+s ~/public_html`  (Sets the correct permissions on the folder)
 
