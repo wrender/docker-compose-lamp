@@ -32,7 +32,8 @@ Example drush install:
 `drush site-install standard --db-url='mysql://root:docker@172.17.0.2/drupaldb' --site-name=Example`
 
 ### Notes about Drush
-* You need to have Drush installed locally, and as well have PHP, and mariadb_client packages installed for it to be able to connect to the container.
+* You need to have Drush, PHP, and mariadb_client packages installed for Drush to be able to connect to the container.
+
 * You need to change the IP address above 172.17.0.2 to the IP of your database container. You can do a `docker inspect your_database_container` to find the IP.
 
 ### Accessing the web server
