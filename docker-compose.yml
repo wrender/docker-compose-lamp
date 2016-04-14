@@ -1,0 +1,25 @@
+httpd:
+  build: .
+  links:
+    - maria_db:mysql
+  ports:
+    - 8180:80
+  volumes:
+    - ~/drupal-html:/var/www/html
+maria_db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: docker
+  ports:
+    - 3306:3306
+  expose:
+    - "3306"
+phpmyadmin:
+  image: corbinu/docker-phpmyadmin
+  links:
+    - maria_db:mysql
+  ports:
+    - 8181:80
+  environment:
+    MYSQL_USERNAME: root
+    MYSQL_ROOT_PASSWORD: docker
