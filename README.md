@@ -6,7 +6,7 @@ A simple set of dockers for running a local Drupal or WordPress LAMP
 - phpMyAdmin
 
 ## To run it
-'docker-compose up -d'
+`docker-compose up -d`
 
 ## Usage Information
 
