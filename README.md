@@ -11,3 +11,7 @@ A simple set of dockers for running a local Drupal or WordPress LAMP
 
 By default it mounts to ~/drupal-html.  From here you can install drupal using Drush.
 
+Example drush install:
+
+'drush site-install standard --db-url='mysql://root:docker@172.17.0.2/drupaldb' --site-name=Example'
+
