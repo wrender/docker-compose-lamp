@@ -1,12 +1,13 @@
 httpd:
   build: .
   links:
-    - maria_db:mysql
+    - maria_db:db
   ports:
     - 8180:80
   volumes:
     - ~/public_html:/var/www/html
 maria_db:
+  container_name: mariadb
   image: mariadb
   environment:
     MYSQL_ROOT_PASSWORD: docker
@@ -15,11 +16,11 @@ maria_db:
   expose:
     - "3306"
 phpmyadmin:
-  image: corbinu/docker-phpmyadmin
+  image: phpmyadmin/phpmyadmin
   links:
-    - maria_db:mysql
+    - maria_db:db
   ports:
     - 8181:80
   environment:
-    MYSQL_USERNAME: root
-    MYSQL_ROOT_PASSWORD: docker
+    PMA_USER: root
+    PMA_PASSWORD: docker

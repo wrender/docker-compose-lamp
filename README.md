@@ -18,9 +18,12 @@ If your running Ubuntu or Fedora as your local development environment you shoul
 *now logout/login of linux as it is needed for the new permissions to take effect.
 
 ## To run the containers
+
+`mkdir ~/public_html; sudo chown -R 33:33 ~/public_html; sudo chmod g+s ~/public_html`  (Sets the correct permissions on the folder)
+
 `docker-compose up -d` (Starts the Containers)
 
-`sudo chown -R 33:33 ~/public_html; sudo chmod g+s ~/public_html`  (Sets the correct permissions on the folder)
+
 
 Example drush install:
 
