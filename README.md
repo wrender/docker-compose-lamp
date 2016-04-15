@@ -36,7 +36,7 @@ If your running Ubuntu or Fedora as your local development environment you shoul
 `drush site-install standard --db-url='mysql://root:docker@172.17.0.2/drupaldb' --site-name=Example`
 
 ### Notes about Drush
-* You need to have Drush, PHP, and mariadb_client packages installed for Drush to be able to connect to the container.
+* You need to have Drush, php-mysqlnd or php-mysql, php-gd, php, php-common, and MariaDB-client packages installed for Drush to be able to connect to the container.
 
 * You need to change the IP address above 172.17.0.2 to the IP of your database container. You can do a `docker inspect your_database_container` to find the IP.
 
