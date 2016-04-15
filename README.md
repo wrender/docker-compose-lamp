@@ -13,7 +13,7 @@ By default this mounts the /var/www/html directory to ~/public_html on your Linu
 
 If your running Ubuntu or Fedora as your local development environment you should create a user and group and folder to match the permission of the ~/public_html folder with the container's Apache user/group. The Apache runs as UID and GUID 33 (www-data).
 
-`sudo groupadd www-data -g 33; sudo useradd -u 33 www-data; sudo usermod -g 33 www-data` (If you already have a group with GID 33, that is ok this command will fail)
+`sudo useradd -u 33 www-data; sudo groupadd www-data -g 33; sudo usermod -g 33 www-data` (If you already have a group with GID 33, that is ok this command will fail)
 
 `sudo usermod -aG 33 your_username;`
 
@@ -31,7 +31,7 @@ If your running Ubuntu or Fedora as your local development environment you shoul
 
 `cd ~/public_html; drush dl drupal-7; mv ~/public_html/drupal*/* ~/public_html; mv ~/public_html/drupal*/.htaccess ~/public_html/drupal*/.gitignore ~/public_html; rm -rf drupal-*`
 
-`sudo chown -R 33:33 ~/public_html` 
+`sudo chown -R 33:33 ~/public_html`
 
 `drush site-install standard --db-url='mysql://root:docker@172.17.0.2/drupaldb' --site-name=Example`
 
