@@ -1,26 +1,59 @@
-httpd:
-  build: .
-  links:
-    - maria_db:db
-  ports:
-    - 8180:80
-  volumes:
-    - ~/public_html:/var/www/html
-maria_db:
-  container_name: mariadb
-  image: mariadb
-  environment:
-    MYSQL_ROOT_PASSWORD: docker
-  ports:
-    - 3306:3306
-  expose:
-    - "3306"
-phpmyadmin:
-  image: phpmyadmin/phpmyadmin
-  links:
-    - maria_db:db
-  ports:
-    - 8181:80
-  environment:
-    PMA_USER: root
-    PMA_PASSWORD: docker
+version: "3.2"
+services:
+  php:
+    build: './php/'
+    restart: always
+    networks:
+      - backend
+    volumes:
+      - /root/web-hosting/website1.com/public_html:/var/www/www.website1.com
+      - /root/web-hosting/website2.com/public_html:/var/www/www.website2.com
+      - /root/web-hosting/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt
+  apache:
+    build: './apache/'
+    restart: always
+    depends_on:
+      - php
+      - mariadb
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /root/web-hosting/website1.com/public_html:/var/www/www.website1.com.com
+      - /root/web-hosting/website2.com/public_html:/var/www/www.website2.com
+      - /root/web-hosting/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt
+
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+    ports:
+      - 3306:3306
+    expose:
+      - "3306"
+    networks:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - 8181:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
+      - UPLOAD_LIMIT=3000000000
+    networks:
+      - backend
+      - frontend
+
+
+networks:
+  frontend:
+  backend:

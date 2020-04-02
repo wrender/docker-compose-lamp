@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  
+  httpd:
+    image: php:7.3-apache
+    container_name: 'certbotgenerate'
+    ports:
+      - "80:80"
+    volumes:
+      - ./000-default-basic.conf:/etc/apache2/sites-available/000-default.conf
+      - /root/web-hosting/certbot/:/var/www/html/
