@@ -14,8 +14,9 @@ First create a temporary container and generate your website SSL certs with Lets
 
 #### Creating LetsEncrypt Certificates
 * Setup domains you want to host in docker-compose-basic.yml and in 000-default-basic.conf
-* Run `docker-compose -f docker-compose-basic.yml up`. This starts up a basic webserver to generate the website certificates
 * Create a local directory to hold your certs. For example: `~/web-hosting/certbot/`
+* Modify docker-compose-basic.yml to map your local certs directory to this volume to /var/www/html
+* Run `docker-compose -f docker-compose-basic.yml up`. This starts up a basic webserver to generate the website certificates
 * Run a certbot/certbot with these commands to generate certs for each domain:
 ```
 sudo docker run -it --rm \

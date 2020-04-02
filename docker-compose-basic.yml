@@ -9,4 +9,4 @@ services:
       - "80:80"
     volumes:
       - ./000-default-basic.conf:/etc/apache2/sites-available/000-default.conf
-      - /root/web-hosting/certbot/:/var/www/html/
+      - ~/web-hosting/certbot/:/var/www/html/
