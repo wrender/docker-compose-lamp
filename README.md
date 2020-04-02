@@ -20,10 +20,10 @@ First create a temporary container and generate your website SSL certs with Lets
 * Run a certbot/certbot with these commands to generate certs for each domain:
 ```
 sudo docker run -it --rm \
--v /web-hosting/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt \
--v /web-hosting/certbot/docker-volumes/var/lib/letsencrypt:/var/lib/letsencrypt \
--v /web-hosting/letsencrypt-site:/var/www/html \
--v "/docker-volumes/var/log/letsencrypt:/var/log/letsencrypt" \
+-v ~/web-hosting/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt \
+-v ~/web-hosting/certbot/docker-volumes/var/lib/letsencrypt:/var/lib/letsencrypt \
+-v ~/web-hosting/certbot/letsencrypt-site:/var/www/html \
+-v "~/web-hosting/certbot/var/log/letsencrypt:/var/log/letsencrypt" \
 certbot/certbot \
 certonly --webroot \
 --register-unsafely-without-email --agree-tos \
