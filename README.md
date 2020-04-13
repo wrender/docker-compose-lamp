@@ -3,6 +3,7 @@ A simple set of dockers for running a Drupal or WordPress in Linux, Apache, Mari
 - Apache 2.4 with SSL
 - ModSecurity 2.9
 - PHP-FPM 7.3
+- Composer
 - MariaDB
 - phpMyAdmin
 
@@ -31,6 +32,7 @@ certonly --webroot \
 --staging \
 -d website1.com -d www.website1.com
 ```
+Note. Once this runs correctly, take out the --staging, and put in your real email.
 * Stop the temporary container with: `docker-compose -f docker-compose-basic.yml stop`
 
 #### Start Containers with Certificates

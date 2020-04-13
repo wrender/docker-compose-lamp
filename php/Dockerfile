@@ -17,3 +17,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 # Install opcache
 RUN docker-php-ext-install opcache
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
