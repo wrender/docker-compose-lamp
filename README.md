@@ -46,6 +46,9 @@ Note: To enable ModSecurity edit apache/modsecurity.conf and change "SecRuleEngi
 ## Updating Certs with Certbot
 - Still need to do this.
 
+## Using Composer
+- Exec into the php container and run composer.
+
 ## Example import existing Drupal install:
 
 -  Copy your Drupal site files into the folder you defined in apache/vhosts.apache.conf
