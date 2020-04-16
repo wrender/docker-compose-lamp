@@ -17,7 +17,7 @@ RUN apt-get install -y unzip libzip-dev \
     && docker-php-ext-install zip
 
 # Install Mysql
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 # Install opcache
 RUN docker-php-ext-install opcache
