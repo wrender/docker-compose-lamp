@@ -1,9 +1,9 @@
 FROM php:7.3-fpm
-RUN apt update; \
-    apt upgrade;
+RUN apt update -y; \
+    apt upgrade -y;
 
 # Install Intl
-RUN apt-get update \
+RUN apt-get update -y \
     && apt-get install -y libicu-dev \
     && docker-php-ext-install intl
 

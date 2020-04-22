@@ -1,6 +1,6 @@
 FROM httpd:2.4
-RUN apt update; \
-    apt upgrade;
+RUN apt update -y; \
+    apt upgrade -y;
 # Copy apache vhost file to proxy php requests to php-fpm container
 COPY vhosts.apache.conf /usr/local/apache2/conf/vhosts.apache.conf
 RUN echo "Include /usr/local/apache2/conf/vhosts.apache.conf" \
