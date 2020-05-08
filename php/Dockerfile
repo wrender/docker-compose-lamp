@@ -34,6 +34,6 @@ RUN apt install -y git
 # Install nodejs nvm, and yarn
 RUN apt install -y nodejs npm gnupg \
 	&& curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" << /etc/apt/sources.list.d/yarn.list \
+	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" >> /etc/apt/sources.list.d/yarn.list \
 	&& apt update -y \
 	&& apt install -y yarn
