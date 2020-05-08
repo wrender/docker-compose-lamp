@@ -27,3 +27,13 @@ RUN echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-memlimit.in
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# Install Git
+RUN apt install -y git
+
+# Install nodejs nvm, and yarn
+RUN apt install -y nodejs npm gnupg \
+	&& curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" << /etc/apt/sources.list.d/yarn.list \
+	&& apt update -y \
+	&& apt install -y yarn

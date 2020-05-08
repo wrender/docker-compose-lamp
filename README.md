@@ -3,9 +3,10 @@ A simple set of dockers for running a Drupal or WordPress in Linux, Apache, Mari
 - Apache 2.4 with SSL
 - ModSecurity 2.9
 - PHP-FPM 7.3
-- Composer
 - MariaDB
 - phpMyAdmin
+- Composer
+- NodeJS, NPM and Yarn
 
 ## General Usage Information
 
@@ -46,8 +47,8 @@ Note: To enable ModSecurity edit apache/modsecurity.conf and change "SecRuleEngi
 ## Updating Certs with Certbot
 - Still need to do this.
 
-## Using Composer
-- Exec into the php container and run composer.
+## Using Composer, NodeJS, NPM and Yarn
+- Exec into the php container and run these tools.
 
 ## Example import existing Drupal install:
 
