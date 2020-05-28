@@ -45,7 +45,15 @@ Note. Once this runs correctly, take out the --staging, and put in your real ema
 Note: To enable ModSecurity edit apache/modsecurity.conf and change "SecRuleEngine DetectionOnly" to "SecRuleEngine On"
 
 ## Updating Certs with Certbot
-- Still need to do this.
+```
+sudo docker run -it --rm \
+-v ~/web-hosting/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt \
+-v ~/web-hosting/certbot/docker-volumes/var/lib/letsencrypt:/var/lib/letsencrypt \
+-v ~/web-hosting/certbot/letsencrypt-site:/var/www/html \
+-v ~/web-hosting/certbot/var/log/letsencrypt:/var/log/letsencrypt \
+certbot/certbot \
+renew --agree-tos 
+```
 
 ## Using Composer, NodeJS, NPM and Yarn
 - Exec into the php container and run these tools.
