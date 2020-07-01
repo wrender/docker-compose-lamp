@@ -45,15 +45,18 @@ Note. Once this runs correctly, take out the --staging, and put in your real ema
 Note: To enable ModSecurity edit apache/modsecurity.conf and change "SecRuleEngine DetectionOnly" to "SecRuleEngine On"
 
 ## Updating Certs with Certbot
+This needs work, but it was the best way I could get this to work for now.
+1.  Adjust your firewall rule to redirect incoming port 80 traffic to another port, for example 8111
+2.  Run something like this to re-issue the certs on the system:
 ```
-sudo docker run -it --rm \
--v ~/web-hosting/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt \
--v ~/web-hosting/certbot/docker-volumes/var/lib/letsencrypt:/var/lib/letsencrypt \
--v ~/web-hosting/certbot/letsencrypt-site:/var/www/html \
--v ~/web-hosting/certbot/var/log/letsencrypt:/var/log/letsencrypt \
-certbot/certbot \
-renew --agree-tos 
+sudo docker run -it --rm --name certbot \
+-v "/data-ssd/kubestorage/var/www/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt" \
+-v "/data-ssd/kubestorage/var/www/certbot/docker-volumes/var/lib/letsencrypt:/var/lib/letsencrypt" \
+-p 8111:80 \
+certbot/certbot certonly \
+-d mydomain.com -d www.mydomain.com
 ```
+3. When certbot runs, you can press "1" to start a standalone instance to renew the domain.
 
 ## Using Composer, NodeJS, NPM and Yarn
 - Exec into the php container and run these tools.
