@@ -56,7 +56,15 @@ sudo docker run -it --rm --name certbot \
 certbot/certbot certonly \
 -d mydomain.com -d www.mydomain.com
 ```
+This seems to work as long as there aren't numerous symlinks:
+```
+sudo docker run -it --rm --name certbot \
+-v "/data-ssd/kubestorage/var/www/certbot/docker-volumes/etc/letsencrypt:/etc/letsencrypt" \
+-p 8111:80 \
+certbot/certbot renew
+```
 3. When certbot runs, you can press "1" to start a standalone instance to renew the domain.
+4. Revert the web server port back to what it was.
 
 ## Using Composer, NodeJS, NPM and Yarn
 - Exec into the php container and run these tools.
